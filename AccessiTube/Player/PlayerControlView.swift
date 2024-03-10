@@ -11,6 +11,7 @@ import AVKit
 struct PlayerControlView: View {
     private let player: AVPlayer
     private let radius: Double = 175.0
+    private let timeObserver: PlayerTimeObserver
     @State private var knobRadius: Double = 15.0
     @State private var durationValue: Double = 0.0
     @State private var angleValue: Double = 0.0
@@ -18,6 +19,7 @@ struct PlayerControlView: View {
     
     init(player: AVPlayer) {
         self.player = player
+        self.timeObserver = PlayerTimeObserver(player: player)
     }
     
     var body: some View {
@@ -47,6 +49,12 @@ struct PlayerControlView: View {
         .padding(20)
         .offset(CGSize(width: (radius + knobRadius) / 2, height: (radius + knobRadius) / 2))
         .clipped()
+        .onReceive(timeObserver.publisher, perform: { time in
+            if let duration = player.currentItem?.duration.seconds, player.currentItem?.status == .readyToPlay {
+                updateDuration(time.seconds / duration)
+                durationString = time.toDurationString()
+            }
+        })
     }
     
     var slider: some View {
@@ -73,7 +81,7 @@ struct PlayerControlView: View {
                 DragGesture(minimumDistance: 0.0)
                     .onChanged({ value in
                         knobRadius = 20
-                        change(location: value.location)
+                        changeDuration(location: value.location)
                     })
                     .onEnded({ _ in
                         knobRadius = 15
@@ -81,18 +89,22 @@ struct PlayerControlView: View {
             )
     }
     
-    private func change(location: CGPoint) {
+    private func changeDuration(location: CGPoint) {
         let angle = atan2(location.y - (knobRadius + 50), location.x - (knobRadius + 50)) + .pi/2.0
         let fixedAngle = angle < 0.0 ? angle + 2.0 * .pi : angle
         let value = (fixedAngle / (2.0 * .pi) - 0.75) * 4
         
         if value >= 0 && value <= 1 {
-            durationValue = value
-            angleValue = (fixedAngle * 180 / .pi) + 90
             let targetTime = CMTime(seconds: value * (player.currentItem?.duration.seconds ?? 0),                                    preferredTimescale: 600)
+            updateDuration(value)
             durationString = targetTime.toDurationString()
             player.seek(to: targetTime)
         }
+    }
+    
+    private func updateDuration(_ value: Double) {
+        durationValue = value
+        angleValue = value * 90
     }
 }
 

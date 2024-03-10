@@ -14,6 +14,7 @@
 		A299B39F2B98AA7A00B0D6DC /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */; };
 		A299B3A12B98AB2700B0D6DC /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */; };
 		A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */; };
+		A299B3A72B9A524400B0D6DC /* PlayerTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extension.swift"; sourceTree = "<group>"; };
+		A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeObserver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			children = (
 				A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */,
 				A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */,
+				A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				A299B39F2B98AA7A00B0D6DC /* PlayerView.swift in Sources */,
 				A299B3922B98A89100B0D6DC /* ContentView.swift in Sources */,
 				A299B3902B98A89100B0D6DC /* AccessiTubeApp.swift in Sources */,
+				A299B3A72B9A524400B0D6DC /* PlayerTimeObserver.swift in Sources */,
 				A299B3A12B98AB2700B0D6DC /* PlayerControlView.swift in Sources */,
 				A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */,
 			);
