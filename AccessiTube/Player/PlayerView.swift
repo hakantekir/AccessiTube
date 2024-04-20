@@ -11,8 +11,8 @@ import AVKit
 struct PlayerView: View {
     private let player: AVPlayer
     
-    init(player: AVPlayer) {
-        self.player = player
+    init(_ url: URL) {
+        player = AVPlayer(url: url)
     }
     
     var body: some View {
@@ -39,6 +39,5 @@ struct PlayerView: View {
 
 #Preview {
     let url = URL(string: "https://devstreaming-cdn.apple.com/videos/tech-talks/111386/2/7E5193EB-C506-450C-9475-0A311E73EAC4/cmaf.m3u8")!
-    let player = AVPlayer(url: url)
-    return PlayerView(player: player)
+    return PlayerView(url)
 }

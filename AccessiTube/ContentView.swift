@@ -15,7 +15,7 @@ struct ContentView: View {
         NavigationStack {
             VStack {
                 NavigationLink {
-                    PlayerView(player: AVPlayer(url: url))
+                    PlayerView(url)
                 } label: {
                     Text("Player")
                 }
