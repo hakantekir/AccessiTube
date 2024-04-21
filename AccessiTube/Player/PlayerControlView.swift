@@ -159,11 +159,11 @@ struct PlayerControlView: View {
         let fixedAngle = angle < 0.0 ? angle + 2.0 * .pi : angle
         let value = (fixedAngle / (2.0 * .pi) - 0.75) * 4
         
-        if value >= 0 && value <= 1 {
+        if 0 <= value && value <= 1 {
             let targetTime = CMTime(seconds: value * (player.currentItem?.duration.seconds ?? 0),                                    preferredTimescale: 600)
             updateDuration(value)
             durationString = targetTime.toDurationString()
-            player.seek(to: targetTime)
+            player.seek(to: targetTime, toleranceBefore: .zero, toleranceAfter: .zero)
         }
     }
     
