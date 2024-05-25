@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A251B9832BF8D99000E10C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */; };
 		A299B3902B98A89100B0D6DC /* AccessiTubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B38F2B98A89100B0D6DC /* AccessiTubeApp.swift */; };
 		A299B3922B98A89100B0D6DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3912B98A89100B0D6DC /* ContentView.swift */; };
 		A299B3942B98A89300B0D6DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A299B3932B98A89300B0D6DC /* Assets.xcassets */; };
@@ -14,10 +15,11 @@
 		A299B39F2B98AA7A00B0D6DC /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */; };
 		A299B3A12B98AB2700B0D6DC /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */; };
 		A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */; };
-		A299B3A72B9A524400B0D6DC /* PlayerTimeObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */; };
+		A2F971062C024AD6005DD82A /* ClassicPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F971052C024AD6005DD82A /* ClassicPlayerControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		A299B38C2B98A89100B0D6DC /* AccessiTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccessiTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A299B38F2B98A89100B0D6DC /* AccessiTubeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessiTubeApp.swift; sourceTree = "<group>"; };
 		A299B3912B98A89100B0D6DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,7 +29,7 @@
 		A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
 		A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extension.swift"; sourceTree = "<group>"; };
-		A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeObserver.swift; sourceTree = "<group>"; };
+		A2F971052C024AD6005DD82A /* ClassicPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPlayerControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				A299B39E2B98AA7A00B0D6DC /* PlayerView.swift */,
+				A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */,
 				A299B3A02B98AB2700B0D6DC /* PlayerControlView.swift */,
-				A299B3A62B9A524400B0D6DC /* PlayerTimeObserver.swift */,
+				A2F971052C024AD6005DD82A /* ClassicPlayerControlView.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -170,7 +173,8 @@
 				A299B39F2B98AA7A00B0D6DC /* PlayerView.swift in Sources */,
 				A299B3922B98A89100B0D6DC /* ContentView.swift in Sources */,
 				A299B3902B98A89100B0D6DC /* AccessiTubeApp.swift in Sources */,
-				A299B3A72B9A524400B0D6DC /* PlayerTimeObserver.swift in Sources */,
+				A2F971062C024AD6005DD82A /* ClassicPlayerControlView.swift in Sources */,
+				A251B9832BF8D99000E10C46 /* PlayerViewModel.swift in Sources */,
 				A299B3A12B98AB2700B0D6DC /* PlayerControlView.swift in Sources */,
 				A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */,
 			);

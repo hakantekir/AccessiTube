@@ -11,20 +11,17 @@ import AVKit
 struct PlayerControlView: View {
     private let player: AVPlayer
     private let radius: Double = 175.0
-    private let timeObserver: PlayerTimeObserver
+    private let viewModel: PlayerViewModel
     @State private var knobRadius: Double = 15.0
     @State private var durationValue: Double = 0.0
     @State private var angleValue: Double = 0.0
-    @State private var durationString = "00:00"
-    @State private var isPaused = true {
-        didSet {
-            pausePlayer()
-        }
-    }
+    @State private var durationString = "00:00 - 00:00"
+    @State private var isPaused = true
+    @State private var lastSeekedValue: CMTime = .zero
     
     init(player: AVPlayer) {
         self.player = player
-        self.timeObserver = PlayerTimeObserver(player: player)
+        viewModel = PlayerViewModel(player: player)
     }
     
     var body: some View {
@@ -40,9 +37,10 @@ struct PlayerControlView: View {
     
     var durationText: some View {
         Text(durationString)
-            .font(.largeTitle)
+            .font(.title3.bold())
             .padding()
             .foregroundStyle(.white)
+            .background(.gray.opacity(0.2), in: .capsule)
     }
     
     var durationView: some View {
@@ -76,7 +74,8 @@ struct PlayerControlView: View {
     
     var pauseButton: some View {
         Button(action: {
-            isPaused.toggle()
+            pausePlayer()
+            viewModel.testAction(.button(.pause))
         }, label: {
             Image(systemName: isPaused ? "play.fill" : "pause.fill")
                 .foregroundStyle(.white)
@@ -87,6 +86,7 @@ struct PlayerControlView: View {
     var backwardButton: some View {
         Button(action: {
             forwardPlayer(-10.0)
+            viewModel.testAction(.button(.backward))
         }, label: {
             Image(systemName: "backward.fill")
                 .foregroundStyle(.white)
@@ -97,6 +97,7 @@ struct PlayerControlView: View {
     var forwardButton: some View {
         Button(action: {
             forwardPlayer(10.0)
+            viewModel.testAction(.button(.forward))
         }, label: {
             Image(systemName: "forward.fill")
                 .foregroundStyle(.white)
@@ -114,10 +115,10 @@ struct PlayerControlView: View {
         .offset(CGSize(width: (radius + knobRadius) / 2, height: (radius + knobRadius) / 2))
         .clipped()
         .frame(width: radius + 15, height: radius + 15)
-        .onReceive(timeObserver.publisher, perform: { time in
+        .onReceive(viewModel.publisher, perform: { time in
             if let duration = player.currentItem?.duration.seconds, player.currentItem?.status == .readyToPlay {
                 updateDuration(time.seconds / duration)
-                durationString = time.toDurationString()
+                changeDurationString(with: time)
             }
         })
     }
@@ -145,11 +146,10 @@ struct PlayerControlView: View {
             .gesture(
                 DragGesture(minimumDistance: 0.0)
                     .onChanged({ value in
-                        //knobRadius = 20
                         changeDuration(location: value.location)
                     })
                     .onEnded({ _ in
-                        //knobRadius = 15
+                        viewModel.testAction(.seek(lastSeekedValue))
                     })
             )
     }
@@ -162,9 +162,16 @@ struct PlayerControlView: View {
         if 0 <= value && value <= 1 {
             let targetTime = CMTime(seconds: value * (player.currentItem?.duration.seconds ?? 0),                                    preferredTimescale: 600)
             updateDuration(value)
-            durationString = targetTime.toDurationString()
+            changeDurationString(with: targetTime)
             player.seek(to: targetTime, toleranceBefore: .zero, toleranceAfter: .zero)
+            lastSeekedValue = targetTime
         }
+    }
+    
+    private func changeDurationString(with time: CMTime) {
+        let current = time.toDurationString()
+        let duration = player.currentItem?.duration.toDurationString()
+        durationString = current + " - " + (duration ?? "")
     }
     
     private func updateDuration(_ value: Double) {
@@ -174,10 +181,11 @@ struct PlayerControlView: View {
     
     private func pausePlayer() {
         if isPaused {
-            player.pause()
-        } else {
             player.play()
+        } else {
+            player.pause()
         }
+        isPaused.toggle()
     }
     
     private func forwardPlayer(_ interval: Double) {
@@ -195,7 +203,7 @@ struct PlayerControlView: View {
             
             updateDuration(newDuration / duration)
             let targetTime = CMTime(seconds: newDuration,                                    preferredTimescale: 600)
-            durationString = targetTime.toDurationString()
+            changeDurationString(with: targetTime)
             player.seek(to: targetTime)
         }
     }

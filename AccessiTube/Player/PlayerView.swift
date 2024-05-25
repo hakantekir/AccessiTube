@@ -9,10 +9,17 @@ import SwiftUI
 import AVKit
 
 struct PlayerView: View {
-    private let player: AVPlayer
+    enum PlayerType {
+        case classic
+        case innovative
+    }
     
-    init(_ url: URL) {
-        player = AVPlayer(url: url)
+    private let player: AVPlayer
+    private let type: PlayerType
+    
+    init(_ player: AVPlayer, type: PlayerType = .innovative) {
+        self.player = player
+        self.type = type
     }
     
     var body: some View {
@@ -32,12 +39,17 @@ struct PlayerView: View {
             VideoPlayer(player: player)
                 .disabled(true)
                 .ignoresSafeArea()
-            PlayerControlView(player: player)
+            switch type {
+            case .classic:
+                ClassicPlayerControlView(player: player)
+            case .innovative:
+                PlayerControlView(player: player)
+            }
         }
     }
 }
 
 #Preview {
     let url = URL(string: "https://devstreaming-cdn.apple.com/videos/tech-talks/111386/2/7E5193EB-C506-450C-9475-0A311E73EAC4/cmaf.m3u8")!
-    return PlayerView(url)
+    return PlayerView(AVPlayer(url: url), type: .innovative)
 }
