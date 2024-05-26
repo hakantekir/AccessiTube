@@ -9,11 +9,6 @@ import SwiftUI
 import AVKit
 
 struct PlayerView: View {
-    enum PlayerType {
-        case classic
-        case innovative
-    }
-    
     private let player: AVPlayer
     private let type: PlayerType
     

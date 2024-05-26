@@ -6,28 +6,65 @@
 //
 
 import SwiftUI
+import SwiftData
 import AVKit
 
 struct ClassicPlayerControlView: View {
     private let player: AVPlayer
-    private let viewModel: PlayerViewModel
+    @ObservedObject private var viewModel: PlayerViewModel
+    @Environment(\.modelContext) private var context
     @State private var durationValue = 0.0
     @State private var durationString = "00:00 - 00:00"
     @State private var isPaused = true
     @State private var isSeeking = false
     @State private var lastSeekedValue: CMTime = .zero
+    @State private var isTestStarted = false
     
     init(player: AVPlayer) {
         self.player = player
-        viewModel = PlayerViewModel(player: player)
+        viewModel = PlayerViewModel(player: player, playerType: .classic)
     }
     var body: some View {
-        VStack {
-            Spacer()
-            controlButtonsView
-            Spacer()
-            durationSliderView
+        if isTestStarted {
+            VStack {
+                testText
+                Spacer()
+                controlButtonsView
+                Spacer()
+                durationSliderView
+            }
+            .onChange(of: viewModel.results) { oldValue, newValue in
+                if let newValue {
+                    print("saved")
+                    context.insert(newValue)
+                }
+            }
+        } else {
+            ZStack {
+                Color.gray.opacity(0.2)
+                    .ignoresSafeArea()
+                VStack {
+                    Button(action: {
+                        isTestStarted = true
+                        viewModel.createTestActions()
+                    }, label: {
+                        Text("Teste Başla")
+                            .font(.title3.bold())
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(.gray.opacity(0.5), in: .capsule)
+                    })
+                }
+            }
         }
+    }
+    
+    var testText: some View {
+        Text(viewModel.currentTestAction?.text ?? "Test Bitti")
+            .font(.title3.bold())
+            .padding()
+            .foregroundStyle(.white)
+            .background(.gray.opacity(0.2), in: .capsule)
     }
     
     var controlButtonsView: some View {
@@ -59,6 +96,7 @@ struct ClassicPlayerControlView: View {
             Text(durationString)
                 .padding(.horizontal)
                 .fixedSize()
+                .foregroundStyle(.white)
         }
         .onReceive(viewModel.publisher, perform: { time in
             if let duration = player.currentItem?.duration.seconds, player.currentItem?.status == .readyToPlay && !isSeeking {

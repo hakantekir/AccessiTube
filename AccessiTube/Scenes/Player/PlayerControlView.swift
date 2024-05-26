@@ -6,18 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 import AVKit
 
 struct PlayerControlView: View {
     private let player: AVPlayer
     private let radius: Double = 175.0
-    private let viewModel: PlayerViewModel
+    @ObservedObject private var viewModel: PlayerViewModel
+    @Environment(\.modelContext) private var context
     @State private var knobRadius: Double = 15.0
     @State private var durationValue: Double = 0.0
     @State private var angleValue: Double = 0.0
     @State private var durationString = "00:00 - 00:00"
     @State private var isPaused = true
     @State private var lastSeekedValue: CMTime = .zero
+    @State private var isTestStarted = false
     
     init(player: AVPlayer) {
         self.player = player
@@ -25,12 +28,38 @@ struct PlayerControlView: View {
     }
     
     var body: some View {
-        VStack {
-            Spacer()
-            HStack(alignment: .bottom) {
-                durationText
+        if isTestStarted {
+            VStack {
+                testText
                 Spacer()
-                durationView
+                HStack(alignment: .bottom) {
+                    durationText
+                    Spacer()
+                    durationView
+                }
+            }
+            .onChange(of: viewModel.results) { oldValue, newValue in
+                if let newValue {
+                    print("saved")
+                    context.insert(newValue)
+                }
+            }
+        } else {
+            ZStack {
+                Color.gray.opacity(0.2)
+                    .ignoresSafeArea()
+                VStack {
+                    Button(action: {
+                        isTestStarted = true
+                        viewModel.createTestActions()
+                    }, label: {
+                        Text("Teste Başla")
+                            .font(.title3.bold())
+                            .padding()
+                            .foregroundStyle(.white)
+                            .background(.gray.opacity(0.5), in: .capsule)
+                    })
+                }
             }
         }
     }
@@ -152,6 +181,14 @@ struct PlayerControlView: View {
                         viewModel.testAction(.seek(lastSeekedValue))
                     })
             )
+    }
+    
+    var testText: some View {
+        Text(viewModel.currentTestAction?.text ?? "Test Bitti")
+            .font(.title3.bold())
+            .padding()
+            .foregroundStyle(.white)
+            .background(.gray.opacity(0.2), in: .capsule)
     }
     
     private func changeDuration(location: CGPoint) {
