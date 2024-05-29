@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A201A02E2C036A9900F701DE /* TestHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201A02D2C036A9900F701DE /* TestHistoryView.swift */; };
+		A201A0302C036AC800F701DE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A201A02F2C036AC800F701DE /* MainView.swift */; };
+		A251B9832BF8D99000E10C46 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */; };
 		A299B3902B98A89100B0D6DC /* AccessiTubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B38F2B98A89100B0D6DC /* AccessiTubeApp.swift */; };
-		A299B3922B98A89100B0D6DC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3912B98A89100B0D6DC /* ContentView.swift */; };
 		A299B3942B98A89300B0D6DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A299B3932B98A89300B0D6DC /* Assets.xcassets */; };
 		A299B3982B98A89300B0D6DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A299B3972B98A89300B0D6DC /* Preview Assets.xcassets */; };
+		A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */; };
+		A2BAFCDE2C036FCB00774E20 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAFCDD2C036FCB00774E20 /* PlayerView.swift */; };
+		A2BAFCE02C036FE200774E20 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAFCDF2C036FE200774E20 /* PlayerControlView.swift */; };
+		A2BAFCE22C036FF400774E20 /* ClassicPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAFCE12C036FF400774E20 /* ClassicPlayerControlView.swift */; };
+		A2BAFCE42C03782400774E20 /* PlayerTestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BAFCE32C03782400774E20 /* PlayerTestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A201A02D2C036A9900F701DE /* TestHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHistoryView.swift; sourceTree = "<group>"; };
+		A201A02F2C036AC800F701DE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		A299B38C2B98A89100B0D6DC /* AccessiTube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccessiTube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A299B38F2B98A89100B0D6DC /* AccessiTubeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessiTubeApp.swift; sourceTree = "<group>"; };
-		A299B3912B98A89100B0D6DC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A299B3932B98A89300B0D6DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A299B3952B98A89300B0D6DC /* AccessiTube.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AccessiTube.entitlements; sourceTree = "<group>"; };
 		A299B3972B98A89300B0D6DC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extension.swift"; sourceTree = "<group>"; };
+		A2BAFCDD2C036FCB00774E20 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		A2BAFCDF2C036FE200774E20 /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
+		A2BAFCE12C036FF400774E20 /* ClassicPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicPlayerControlView.swift; sourceTree = "<group>"; };
+		A2BAFCE32C03782400774E20 /* PlayerTestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +47,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A201A02B2C036A6D00F701DE /* TestHistory */ = {
+			isa = PBXGroup;
+			children = (
+				A201A02D2C036A9900F701DE /* TestHistoryView.swift */,
+			);
+			path = TestHistory;
+			sourceTree = "<group>";
+		};
+		A201A02C2C036A8100F701DE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A299B3A22B98ABC100B0D6DC /* Player */,
+				A201A02B2C036A6D00F701DE /* TestHistory */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		A299B3832B98A89100B0D6DC = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				A299B38F2B98A89100B0D6DC /* AccessiTubeApp.swift */,
-				A299B3912B98A89100B0D6DC /* ContentView.swift */,
+				A201A02F2C036AC800F701DE /* MainView.swift */,
+				A201A02C2C036A8100F701DE /* Scenes */,
+				A299B3A32B98B16D00B0D6DC /* Utility */,
 				A299B3932B98A89300B0D6DC /* Assets.xcassets */,
 				A299B3952B98A89300B0D6DC /* AccessiTube.entitlements */,
 				A299B3962B98A89300B0D6DC /* Preview Content */,
@@ -67,6 +100,26 @@
 				A299B3972B98A89300B0D6DC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A299B3A22B98ABC100B0D6DC /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				A2BAFCDD2C036FCB00774E20 /* PlayerView.swift */,
+				A251B9822BF8D99000E10C46 /* PlayerViewModel.swift */,
+				A2BAFCDF2C036FE200774E20 /* PlayerControlView.swift */,
+				A2BAFCE12C036FF400774E20 /* ClassicPlayerControlView.swift */,
+				A2BAFCE32C03782400774E20 /* PlayerTestModel.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		A299B3A32B98B16D00B0D6DC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A299B3A42B98B18600B0D6DC /* CMTime+Extension.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,7 +150,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					A299B38B2B98A89100B0D6DC = {
 						CreatedOnToolsVersion = 15.2;
@@ -139,8 +192,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A299B3922B98A89100B0D6DC /* ContentView.swift in Sources */,
+				A201A02E2C036A9900F701DE /* TestHistoryView.swift in Sources */,
+				A2BAFCE02C036FE200774E20 /* PlayerControlView.swift in Sources */,
+				A201A0302C036AC800F701DE /* MainView.swift in Sources */,
+				A2BAFCDE2C036FCB00774E20 /* PlayerView.swift in Sources */,
 				A299B3902B98A89100B0D6DC /* AccessiTubeApp.swift in Sources */,
+				A2BAFCE42C03782400774E20 /* PlayerTestModel.swift in Sources */,
+				A2BAFCE22C036FF400774E20 /* ClassicPlayerControlView.swift in Sources */,
+				A251B9832BF8D99000E10C46 /* PlayerViewModel.swift in Sources */,
+				A299B3A52B98B18600B0D6DC /* CMTime+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +241,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -242,6 +303,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -269,6 +331,7 @@
 				CODE_SIGN_ENTITLEMENTS = AccessiTube/AccessiTube.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AccessiTube/Preview Content\"";
 				DEVELOPMENT_TEAM = H3L57XFNX5;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -307,6 +370,7 @@
 				CODE_SIGN_ENTITLEMENTS = AccessiTube/AccessiTube.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AccessiTube/Preview Content\"";
 				DEVELOPMENT_TEAM = H3L57XFNX5;
 				ENABLE_HARDENED_RUNTIME = YES;
